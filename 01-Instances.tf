@@ -115,11 +115,15 @@ resource "aws_instance" "drone" {
   security_groups             = ["${aws_security_group.node.name}"]    # This parameter is submitted as a [list] even if only 1 reference
   key_name                    = "${var.key_name}"
 
+  connection {
+    type        = "ssh"
+    user        = "${var.ssh_user}"
+    private_key = "${file("${var.ssh_key_path}")}"
+  }
+  
   provisioner "file" {
     source      = "Userdata/docker-compose.yml"
     destination = "/home/ubuntu/docker-compose.yml"
-    private_key = "~/Downloads/bootcamp-coreos-kube-test.pem"
-    user        = "ubuntu" 
   }
 
   tags {
