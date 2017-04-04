@@ -13,6 +13,15 @@ variable "instance_name" {}
 
 variable "key_name" {}
 
+variable "ssh_user" {
+  description = "ssh username to ec2 instance"
+  default     = "ubuntu"
+}
+
+variable "ssh_key_path" {
+  description = "local path to private key for ssh-ing to ec2 instance"
+}
+
 # Subnet Availability zones
 variable "subnetaz1" {
   type = "map"
