@@ -58,7 +58,7 @@ resource "aws_instance" "web2" {
       "sudo apt-get update",
       "sudo apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-xenial",
       "sudo chmod 400 /home/ubuntu/test.pem",
-      "sudo scp -o StrictHostKeyChecking=no -o NoHostAuthenticationForLocalhost=yes -o UserKnownHostsFile=/dev/null -i test.pem ubuntu@${aws_instance.web.private_ip}:/home/ubuntu/token .",
+      "sudo scp -o StrictHostKeyChecking=no -o NoHostAuthenticationForLocalhost=yes -o UserKnownHostsFile=/dev/null -i /home/ubuntu/test.pem ubuntu@${aws_instance.web.private_ip}:/home/ubuntu/token .",
       "sudo docker swarm join --token $(cat /home/ubuntu/token) ${aws_instance.web.private_ip}:2377",
     ]
   }
@@ -96,7 +96,7 @@ resource "aws_instance" "web3" {
       "sudo apt-get update",
       "sudo apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-xenial",
       "sudo chmod 400 /home/ubuntu/test.pem",
-      "sudo scp -o StrictHostKeyChecking=no -o NoHostAuthenticationForLocalhost=yes -o UserKnownHostsFile=/dev/null -i test.pem ubuntu@${aws_instance.web.private_ip}:/home/ubuntu/token .",
+      "sudo scp -o StrictHostKeyChecking=no -o NoHostAuthenticationForLocalhost=yes -o UserKnownHostsFile=/dev/null -i /home/ubuntu/test.pem ubuntu@${aws_instance.web.private_ip}:/home/ubuntu/token .",
       "sudo docker swarm join --token $(cat /home/ubuntu/token) ${aws_instance.web.private_ip}:2377",
     ]
   }
