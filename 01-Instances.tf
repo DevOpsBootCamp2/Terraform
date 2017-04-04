@@ -116,7 +116,7 @@ resource "aws_instance" "drone" {
   key_name                    = "${var.key_name}"
 
   provisioner "file" {
-    source       = Userdata/docker-compose.yml
+    source       = "Userdata/docker-compose.yml"
     destination  = "/home/ubuntu/docker-compose.yml"
   }
 
