@@ -1,11 +1,10 @@
 region = "eu-west-1"
-awsprofile = "bcamp"
+#awsprofile = "bcamp"
 
 instance_size = "t2.micro"
 instance_count = "1"
 instance_name = "Web-instance"
 
-key_name = "Devops_Bootcamp_Project"
 
 # Subnet Availability zones
 subnetaz1 = {
