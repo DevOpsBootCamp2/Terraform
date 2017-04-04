@@ -115,6 +115,11 @@ resource "aws_instance" "drone" {
   security_groups             = ["${aws_security_group.node.name}"]    # This parameter is submitted as a [list] even if only 1 reference
   key_name                    = "${var.key_name}"
 
+  provisioner "file" {
+    source       = Userdata/docker-compose.yml
+    destination  = "/home/ubuntu/docker-compose.yml"
+  }
+
   tags {
     Name = "Drone-host"
   }
