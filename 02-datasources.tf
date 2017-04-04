@@ -10,6 +10,10 @@ data "template_file" "manager" {
   template = "${file("${path.module}/Userdata/manager.sh")}"
 }
 
+data "template_file" "drone" {
+  template = "${file("${path.module}/Userdata/drone.sh")}"
+}
+
 data "aws_ami" "amazon" {
   #  most_recent = true
 

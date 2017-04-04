@@ -3,15 +3,15 @@ output "elb_dns_name" {
 }
 
 output "web_ip" {
-  value = "${aws_instance.web.private_ip}"
+  value = "${aws_instance.web.public_ip}"
 }
 
 output "web2_ip" {
-  value = "${aws_instance.web2.private_ip}"
+  value = "${aws_instance.web2.public_ip}"
 }
 
 output "web3_ip" {
-  value = "${aws_instance.web3.private_ip}"
+  value = "${aws_instance.web3.public_ip}"
 }
 
 output "drone_ip" {
