@@ -14,7 +14,7 @@ services:
       - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT}
       - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET}
       - DRONE_SECRET=${DRONE_SECRET}
-      - DRONE_ADMIN=NirajSaparia,mgopaul2
+      - DRONE_ADMIN=NirajSaparia,mgopaul2,harvey1327,beniam23
 
   drone-agent:
     image: drone/drone:0.5
