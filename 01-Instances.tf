@@ -116,8 +116,10 @@ resource "aws_instance" "drone" {
   key_name                    = "${var.key_name}"
 
   provisioner "file" {
-    source       = "Userdata/docker-compose.yml"
-    destination  = "/home/ubuntu/docker-compose.yml"
+    source      = "Userdata/docker-compose.yml"
+    destination = "/home/ubuntu/docker-compose.yml"
+    private_key = "~/Downloads/bootcamp-coreos-kube-test.pem"
+    user        = "ubuntu" 
   }
 
   tags {
