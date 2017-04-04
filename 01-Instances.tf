@@ -140,7 +140,7 @@ resource "aws_instance" "drone" {
      "sudo apt-get update",
      "sudo apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-xenial",
      "usermod -aG docker ubuntu",
-     "su - ubuntu -c "docker-compose up -d"
+     "su - ubuntu -c \"docker-compose up -d\" ",
      ]
   }
 
