@@ -23,6 +23,13 @@ resource "aws_security_group" "node" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port = 0
+    to_port   = 65535
+    protocol  = "tcp"
+    self      = true
+  }
+
   ### A weird exception - allowing ICMP (pinging of the instance)
   ingress {
     from_port   = -1
