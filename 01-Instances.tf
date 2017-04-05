@@ -136,6 +136,10 @@ resource "aws_instance" "drone" {
     destination = "/home/ubuntu/get-dc.sh"
   }
 
+  provisioner "file" {
+    source      = "Userdata/drone-start.sh"
+    destination = "/home/ubuntu/drone-start.sh"
+  }
   provisioner "remote-exec" {
     inline = [
      "sudo apt-get update",
@@ -147,11 +151,9 @@ resource "aws_instance" "drone" {
      "sudo usermod -aG docker ubuntu",
      "sudo chmod +x /home/ubuntu/get-dc.sh",
      "sudo /home/ubuntu/get-dc.sh ",
-     "sleep 10",
-     "echo end of sleep",
-     "echo -n DRONE env",
-     "env |grep DRONE ",
-     ". ~/.bash_profile && docker-compose up -d",
+     "sleep 120",
+     "chmod +x ~/drone-start.sh",
+     "/home/ubuntu/drone-start.sh",
      ]
   }
 
