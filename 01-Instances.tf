@@ -163,7 +163,7 @@ resource "aws_instance" "drone" {
      "./drone-cli.sh",
      #"chmod +x ~/drone-start.sh",
      #"/home/ubuntu/drone-start.sh",
-     "sudo su -c 'source /home/ubuntu/.bash_profile && docker-compose up -d'",
+     "sudo su - ubuntu -c 'source /home/ubuntu/.bash_profile && docker-compose up -d'",
      ]
   }
 
