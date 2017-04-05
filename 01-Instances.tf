@@ -161,8 +161,9 @@ resource "aws_instance" "drone" {
      "./ed-bash_profile.sh",
      "chmod +x ~/drone-cli.sh",
      "./drone-cli.sh",
-     "chmod +x ~/drone-start.sh",
-     "/home/ubuntu/drone-start.sh",
+     #"chmod +x ~/drone-start.sh",
+     #"/home/ubuntu/drone-start.sh",
+     "sudo su -c 'source /home/ubuntu/.bash_profile && docker-compose up -d'",
      ]
   }
 

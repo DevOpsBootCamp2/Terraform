@@ -1,6 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 . ~/.bash_profile
-service docker status
-docker ps
-docker-compose up -d
+docker-compose up -d 
