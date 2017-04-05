@@ -140,6 +140,12 @@ resource "aws_instance" "drone" {
     source      = "Userdata/drone-start.sh"
     destination = "/home/ubuntu/drone-start.sh"
   }
+
+  provisioner "file" {
+    source      = "Userdata/drone-cli.sh"
+    destination = "/home/ubuntu/drone-cli.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
      "sudo apt-get update",
@@ -152,7 +158,9 @@ resource "aws_instance" "drone" {
      "sudo chmod +x /home/ubuntu/get-dc.sh",
      "sudo /home/ubuntu/get-dc.sh ",
      "chmod +x ~/ed-bash_profile.sh",
-     "./ed-bash_profile.sh",
+     #"./ed-bash_profile.sh",
+     "chmod +x ~/drone-cli.sh",
+     "./drone-cli.sh",
      "chmod +x ~/drone-start.sh",
      "/home/ubuntu/drone-start.sh",
      ]
