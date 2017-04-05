@@ -158,7 +158,7 @@ resource "aws_instance" "drone" {
      "sudo chmod +x /home/ubuntu/get-dc.sh",
      "sudo /home/ubuntu/get-dc.sh ",
      "chmod +x ~/ed-bash_profile.sh",
-     #"./ed-bash_profile.sh",
+     "./ed-bash_profile.sh",
      "chmod +x ~/drone-cli.sh",
      "./drone-cli.sh",
      "chmod +x ~/drone-start.sh",
