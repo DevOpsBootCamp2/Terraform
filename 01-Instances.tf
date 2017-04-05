@@ -127,8 +127,8 @@ resource "aws_instance" "drone" {
   }
 
   provisioner "file" {
-    source      = "Userdata/drone-bash_profile"
-    destination = "/home/ubuntu/.bash_profile"
+    source      = "Userdata/drone-bash_profile.sh"
+    destination = "/home/ubuntu/ed-bash_profile.sh"
   }
   
   provisioner "file" {
@@ -151,7 +151,8 @@ resource "aws_instance" "drone" {
      "sudo usermod -aG docker ubuntu",
      "sudo chmod +x /home/ubuntu/get-dc.sh",
      "sudo /home/ubuntu/get-dc.sh ",
-     "sleep 120",
+     "chmod +x ~/ed-bash_profile.sh",
+     "./ed-bash_profile.sh",
      "chmod +x ~/drone-start.sh",
      "/home/ubuntu/drone-start.sh",
      ]
