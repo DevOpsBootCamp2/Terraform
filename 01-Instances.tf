@@ -127,8 +127,13 @@ resource "aws_instance" "drone" {
   }
 
   provisioner "file" {
-    source      = "Userdata/bash_profile"
+    source      = "Userdata/drone-bash_profile"
     destination = "/home/ubuntu/.bash_profile"
+  }
+  
+  provisioner "file" {
+    source      = "Userdata/get-dc.sh"
+    destination = "/home/ubuntu/get-dc.sh"
   }
 
   provisioner "remote-exec" {
@@ -139,8 +144,14 @@ resource "aws_instance" "drone" {
      "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
      "sudo apt-get update",
      "sudo apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-xenial",
-     "usermod -aG docker ubuntu",
-     "su - ubuntu -c \"docker-compose up -d\" ",
+     "sudo usermod -aG docker ubuntu",
+     "sudo chmod +x /home/ubuntu/get-dc.sh",
+     "sudo /home/ubuntu/get-dc.sh ",
+     "sleep 10",
+     "echo end of sleep",
+     "echo -n DRONE env",
+     "env |grep DRONE ",
+     ". ~/.bash_profile && docker-compose up -d",
      ]
   }
 
